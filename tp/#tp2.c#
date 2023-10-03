@@ -1,0 +1,13 @@
+#include <libTableauNoir.h>
+
+void changerTitre(char * Exercice 1);
+void choisirCouleurFond(int rouge, int vert, int bleu);
+
+void attendreClicGauche();
+if(attendreCliqueGauche()==1){
+  fermerTableau();
+ }
+
+int main(){
+  creerTableau();
+}
