@@ -8,10 +8,6 @@
 //The function should simply print the vallues of both of the arrays
 //Step2 - Return & pass by Ref
 
-void printArrray(int *arr, int size)
-{
-}
-
 void generateOddEvenArrays(int *sourceArray, int size)
 {
   int i;
@@ -50,6 +46,9 @@ int main()
   int originalArray[] = {12,5,7,8,3,10,4,9};
   printf("Source/Original Array Values: \n");
   printArray(originalArray,8);
+  //Print the values of all the arrays
+  free(evenArray);
+  free(oddArray);
   return 0;
 }
 
