@@ -64,3 +64,45 @@ int main() {
 
     return 0;
 }
+
+//Version moins condensée 
+
+#include <stdio.h>
+
+void fusionner(int tableau[], int debut, int milieu, int fin) {
+    int i = debut, j = milieu + 1;
+    while (i <= milieu && j <= fin) {
+        if (tableau[i] <= tableau[j]) {
+            i++;
+        } else {
+            int valeur = tableau[j], index = j;
+            while (index != i) tableau[index] = tableau[--index];
+            tableau[i++] = valeur;
+            milieu++;
+            j++;
+        }
+    }
+}
+
+void tri_fusion(int tableau[], int taille) {
+    for (int tailleSousTableau = 1; tailleSousTableau < taille; tailleSousTableau *= 2) {
+        for (int debut = 0; debut < taille - tailleSousTableau; debut += 2 * tailleSousTableau) {
+            int milieu = debut + tailleSousTableau - 1;
+            int fin = (debut + 2 * tailleSousTableau - 1 < taille) ? (debut + 2 * tailleSousTableau - 1) : (taille - 1);
+            fusionner(tableau, debut, milieu, fin);
+        }
+    }
+}
+
+int main() {
+    int tableau[] = {12, 11, 13, 5, 6, 7};
+    int taille = sizeof(tableau) / sizeof(tableau[0]);
+
+    triFusionIteratif(tableau, taille);
+
+    for (int i = 0; i < taille; i++)
+        printf("%d ", tableau[i]);
+    printf("\n");
+
+    return 0;
+}
