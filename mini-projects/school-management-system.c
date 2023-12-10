@@ -54,7 +54,10 @@ Course* createCourse()
     for(int i=0; i<newCourse->totalStudents; i++)
     {
         printf("Enter details for student #%d\n", i+1);
+        // assert
         Student* newStudent = createStudent();
-        newCourse->studentArray[i] = *newStudent;
+        newCourse->studentArray[i] = *newStudent; //copying field-by-field
+        free(newStudent); //free the temporary student memory allocated bu 'createStudent" function
     }
+    return newCourse;
 }
