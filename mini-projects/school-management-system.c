@@ -7,6 +7,7 @@
 typedef struct student{
     char name[20];
     unsigned int id;
+    unsigned int grade;
 }Student;
 
 //Defining the course struct
@@ -123,3 +124,19 @@ void printStudentCourses(School* school, int studentID)
         }
     }
 }
+
+//Printing Students who failed course
+
+void printStudentsWhoFailed(Course *course, double cutOffGrade)
+{
+    printf("Student wo failed int %s:\n", course->name);
+    for(int i =0; i<course->totalStudents; i++)
+    {
+        if(course->studentArray[i].)
+    }
+}
+
+
+
+
+
