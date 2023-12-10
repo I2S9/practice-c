@@ -61,3 +61,27 @@ Course* createCourse()
     }
     return newCourse;
 }
+
+//Creating a School
+
+School* createSchool()
+{
+    School* newSchool = (School*)malloc(sizeof(School));
+    // assert
+    printf("Enter school name: ");
+    scanf("%s", newSchool->name);
+    printf("Enter the number of courses: ");
+    scanf("%u", &(newSchool->totalCourses));
+    newSchool->courseArray = (Course*)malloc(sizeof(Course) * newSchool->totalCourses);
+    // asert
+    for(int i=0; i<newSchool->totalCourses; i++)
+    {
+        printf("Enter details for course #%d\n", i+1);
+        // assert
+        Course* newCourse = createCourse();
+        newSchool->courseArray[i] = *newCourse; //copying field-by-field
+        free(newCourse); //free the temporary student memory allocated bu 'createStudent" function
+    }
+    return newSchool;
+}
+
