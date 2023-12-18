@@ -230,6 +230,7 @@ void freeCourses(Course* courses, unsigned int totalCourses)
     for(unsigned int i=0; i<totalCourses; i++)
     {
         freeStudents(courses[i].studentArray);
+        courses[i].studentArray = NULL;
     }
 }
 
@@ -237,6 +238,7 @@ void freeSchool(School* school)
 {
     freeCourses(school->courseArray, school->totalCourses); 
     free(school->courseArray);  
+    school->courseArray = NUll;
     free(school);  
 }
 
