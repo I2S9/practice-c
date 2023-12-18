@@ -105,12 +105,12 @@ void printStudentDetails(Student* student)
 
 //Printing Course Details
 
-void printCourseDetails(Course* studecoursent)
+void printCourseDetails(Course* course)
 {
     printf("Course name: %s\n", course->name);
     printf("Course Average Grade: %lf\n", course->averageGrade);
     printf("Course total students: %u\n", course->totalStudents);
-    for(int i=0; i<course->totalSTudents; i++){
+    for(int i=0; i<course->totalStudents; i++){
         printf("Details forstudent #%d:\n", i+1);
         printStudentDetails(&(course->studentArray[i]));
     }
@@ -193,7 +193,7 @@ void printAverageGradeAllCourses(School* school)
         totalGrade += (school->courseArray[i].averageGrade);
 
     double average = totalGrade / school->totalCourses;
-    printf("Average grade between all courses in school %s is %.2f\n", school->naùe, average);
+    printf("Average grade between all courses in school %s is %.2f\n", school->name, average);
 }
 
 //Printing the course with the highest average grade 
@@ -210,4 +210,10 @@ void printCourseWithHighestAverage(School* school)
         }
     printf("Course with the highest average grade:\n");
     printCourseDetails(highestAvgCourse);
+}
+
+int main()
+{
+    //Create a new school
+    School* myschool = createSchool();
 }
