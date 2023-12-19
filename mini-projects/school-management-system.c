@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS_
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool>
+#include <stdbool.h>
 
 //Defining the student struct
 
