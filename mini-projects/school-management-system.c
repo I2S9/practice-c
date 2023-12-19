@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS_
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool>
 
 //Defining the student struct
 
@@ -212,6 +213,8 @@ void printCourseWithHighestAverage(School* school)
     printCourseDetails(highestAvgCourse);
 }
 
+//Printing school details 
+
 void printSchoolDetails(School* school)
 {
     for(int i=0; i<school->totalCourses; i++)
@@ -219,6 +222,97 @@ void printSchoolDetails(School* school)
         printCourseDetails(&(school->courseArray[i]));
     }
 }
+
+//Updating Student Grade
+
+void updateStudentGrade(Course* course, unsigned int studentID, unsigned int newGrade)
+{
+    //Iterate over the students in the course
+    for(unsigned int i=0; i<course->totalStudents;i++)
+    {
+        //Checks if the student ID matches the provised studentID
+        if(course->studentArray[i].id == studentID)
+        {
+            //Update the student grade
+            course->studentArray[i].grade = newGrade;
+
+            //Automatically update the course average grade
+            updateAverageGrade(course);
+            return;
+        }
+    }
+    printf("Student was not found\n");
+}
+
+//Update Student Name
+
+void updateStudentGrade(Course* course, unsigned int studentID, unsigned int newName)
+{
+    //Iterate over the students in the course
+    for(unsigned int i=0; i<course->totalStudents;i++)
+    {
+        //Checks if the student ID matches the provised studentID
+        if(course->studentArray[i].id == studentID)
+        {
+            //Update the student name
+            strcpy(course->studentArray[i].name, newName);
+            return;
+        }
+    }
+    printf("Student was not found\n");
+}
+
+//Is Course In School ?
+
+bool isCourseInSchool(School* school, char* courseName)
+{
+    Course* courseArray = school->courseArray;
+    unsigned int numCourses = school->totalCourses;
+
+    //Iterate over all the courses in the array
+    for(unisgned int i=0; i<numCourses; i++)
+    {
+        if(strcmp(courseArray[i].name, courseName) == 0)
+            return true;
+    }
+    return false;
+}
+
+//Updating Course name 
+
+void updateCourseName(Course* course, char* newName)
+{
+    strcpy(course->name, newName);
+}
+
+//Printing Common Courses between Schools
+
+void printCommonCoursesBetweenSchool(School* school1, School* school2)
+{
+    printf("Common courses between %s and %s:\n", school1->name, school2->name);
+
+    //Iterate over all courses in the first school
+    for(unsigned int i=0; i<school1->totalCourses; i++)
+    {
+        if(isCourseInSchool(school2, school1->courseArray[i].name))
+            printf("%s\n", school1->courseArray[i].name)
+    }
+}
+
+//Printing Courses in one school while not in the other
+
+void printUniqueCoursesBetweenSchool(School* school1, School* school2)
+{
+    printf("Courses in %s butn not in %s:\n", school1->name, school2->name);
+
+    //Check if the course also in the second school
+    for(unsigned int i=0; i<school1->totalCourses; i++)
+    {
+        if(!isCourseInSchool(school2, school1->courseArray[i].name))
+            printf("%s\n", school1->courseArray[i].name)
+    }
+}
+
 
 void freeStudents(Student* students)
 {
@@ -238,9 +332,10 @@ void freeSchool(School* school)
 {
     freeCourses(school->courseArray, school->totalCourses); 
     free(school->courseArray);  
-    school->courseArray = NUll;
+    school->courseArray = NULL;
     free(school);  
 }
+
 
 int main()
 {
