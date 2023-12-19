@@ -270,7 +270,7 @@ bool isCourseInSchool(School* school, char* courseName)
     unsigned int numCourses = school->totalCourses;
 
     //Iterate over all the courses in the array
-    for(unisgned int i=0; i<numCourses; i++)
+    for(unsigned int i=0; i<numCourses; i++)
     {
         if(strcmp(courseArray[i].name, courseName) == 0)
             return true;
@@ -295,7 +295,7 @@ void printCommonCoursesBetweenSchool(School* school1, School* school2)
     for(unsigned int i=0; i<school1->totalCourses; i++)
     {
         if(isCourseInSchool(school2, school1->courseArray[i].name))
-            printf("%s\n", school1->courseArray[i].name)
+            printf("%s\n", school1->courseArray[i].name);
     }
 }
 
@@ -309,7 +309,7 @@ void printUniqueCoursesBetweenSchool(School* school1, School* school2)
     for(unsigned int i=0; i<school1->totalCourses; i++)
     {
         if(!isCourseInSchool(school2, school1->courseArray[i].name))
-            printf("%s\n", school1->courseArray[i].name)
+            printf("%s\n", school1->courseArray[i].name);
     }
 }
 
