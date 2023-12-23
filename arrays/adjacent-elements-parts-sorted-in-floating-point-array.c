@@ -23,11 +23,3 @@ int isSpecialFloatingSorted(double* arr, int size)
     return 0;
 }
 
-
-
-
-
-
-  
-  
-}
