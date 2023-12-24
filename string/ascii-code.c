@@ -4,9 +4,9 @@
 void main()
 {
     char ch;
-    printf("Press Any key on keybpard !\n");
+    printf("Press Any key on keyboard !\n");
     ch = getch();
-    printf("\n Ascii code = %d", ch);
+    printf("Ascii code = %d\n", ch);
     if(ch==0)
     {
         ch = getch();
