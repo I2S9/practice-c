@@ -7,3 +7,4 @@ These are not difficult or complicated projects, I realize them in order to prac
 ## Plan 
 ### I. School Management System
 ### II. The Right Price
+### III. Password Generator
